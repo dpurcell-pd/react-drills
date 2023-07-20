@@ -6,11 +6,23 @@ function App() {
   const [counter, setCounter] = useState(0);
 
   const handleIncrement = () => {
-    setCounter(counter + 1);
+    setCounter(prevCount => prevCount + 1);
   }
 
   const handleDecrement = () => {
-    setCounter(counter - 1);
+    setCounter(prevCount => prevCount - 1);
+  }
+
+  const incrementFive = () => {
+    setCounter(prevCount => prevCount + 5)
+  }
+
+  const decrementFive = () => {
+    setCounter(prevCount => prevCount - 5)
+  }
+
+  const reset = () => {
+    setCounter(prevCount => prevCount = 0);
   }
 
   return (
@@ -18,14 +30,15 @@ function App() {
       <h1>React Drills</h1>
       
       {/* <Arrays /> */}
-      {/* <Objects /> */}
-      
+      {/* <Objects /> */}      
       <h1> {counter} </h1>
       <button onClick = {handleIncrement}> + </button>
-      <button onClick = {() => {setCounter(counter - 1)}}> - </button>
+      <button onClick = {handleDecrement}> - </button>
       <br />
-      <button onClick = {() => {setCounter(0)}}> RESET </button>
-    
+      <button onClick = {reset}> RESET </button>
+      <br />
+      <button onClick={incrementFive}>Increment 5</button>
+      <button onClick={decrementFive}>Decrement 5</button>
     </div>
   );
 }
